@@ -1,24 +1,20 @@
 # ПР10 Mesto: портирование на «Реакт»
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
+Этот проект был инициирован с помощью [Create React App](https://github.com/facebook/create-react-app).
+В каталоге проекта вы можете запустить:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Запускает приложение в режиме разработки.\
+Откройте [http://localhost:3000](http://localhost:3000) чтобы просмотреть его в браузере.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Страница перезагрузится, когда вы внесете изменения.\
+Вы также можете увидеть любые ошибки lint в консоли.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Запускает программу тестирования в режиме интерактивного просмотра.\
+Дополнительные сведения см.[выполнение тестов](https://facebook.github.io/create-react-app/docs/running-tests).
 
 ### `npm run build`
 

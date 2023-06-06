@@ -1,127 +1,145 @@
-// import React from 'react';
-import tmplPath from '../images/template.png';
+import React from 'react';
+// import tmplPath from '../images/template.png';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
+import ImagePopup from './ImagePopup';
+import PopupWithForm from './PopupWithForm';
 
 
 function App() {
+  const [isEditProfilePopupOpen, setProfilePopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setAvatarPopupOpen] = React.useState(false);
+
+  function handleEditAvatarClick() {
+    setAvatarPopupOpen(true);
+  }
+  function handleEditProfileClick() {
+    setProfilePopupOpen(true);
+  }
+  function handleAddPlaceClick() {
+    setPlacePopupOpen(true);
+  }
+  function closeAllPopups() {
+    isEditProfilePopupOpen && setProfilePopupOpen(false);
+    isAddPlacePopupOpen && setPlacePopupOpen(false);
+    isEditAvatarPopupOpen && setAvatarPopupOpen(false);
+  }
+
   return (
-    <body class="page">
+    <div className="page">
       <Header />
-      <Main />
+      <Main onEditProfile={handleEditProfileClick}
+            onAddPlace={handleAddPlaceClick}
+            onEditAvatar={handleEditAvatarClick} />
       <Footer />
-
-      <div id="card-image" class="popup popup_img">
-        <div class="popup__conteiner popup__conteiner_img">
-          <button type="button" class="popup__close"></button>
-          <img class="popup__image" src={tmplPath} alt="новый" />
-          <h2 class="popup__title popup__title_img">Подпись изображения</h2>
-        </div>
-      </div>
-
-
-      <div id="card-place" class="popup">
-        <div class="popup__conteiner">
-          <button type="button" class="popup__close"></button>
-          <h2 class="popup__title">Новое место</h2>
-          <form class="popup-form" id="form-place" name="form-place" novalidate>
+      <ImagePopup />
+      <PopupWithForm
+        title="Новое место"
+        name="place"
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
+        children={() => {
+          return (
+          <>
             <input
-                  id="input-place-name"
-                  name="input-place-name"
-                  type="text"
-                  placeholder="Название"
-                  minlength="2"
-                  maxlength="30"
-                  autocomplete="off"
-                  class="popup__input-text"
-                  required />
-            <span class="input-place-name-error popup__input-error"></span>
+              id="input-place-name"
+              name="input-place-name"
+              type="text"
+              placeholder="Название"
+              minLength="2"
+              maxLength="30"
+              autoComplete="off"
+              className="popup__input-text"
+              required />
+            <span className="input-place-name-error popup__input-error"></span>
             <input
-                  id="input-img-link"
-                  name="input-img-link"
-                  type="url"
-                  placeholder="Ссылка на картинку"
-                  autocomplete="off"
-                  class="popup__input-text"
-                  required />
-            <span class="input-img-link-error popup__input-error"></span>
+              id="input-img-link"
+              name="input-img-link"
+              type="url"
+              placeholder="Ссылка на картинку"
+              autoComplete="off"
+              className="popup__input-text"
+              required />
+            <span className="input-img-link-error popup__input-error"></span>
             <button
-                  type="submit"
-                  class="popup__submit-btn">
+              type="submit"
+              className="popup__submit-btn">
               Создать
             </button>
-          </form>
-        </div>
-      </div>
-
-      <div id="card-user-avatar" class="popup">
-        <div class="popup__conteiner">
-          <button type="button" class="popup__close"></button>
-          <h2 class="popup__title">Обновить аватар</h2>
-          <form class="popup-form" id="form-user-avatar" name="form-user-avatar" novalidate>
+          </>
+        )}} />
+      <PopupWithForm
+        title="Обновить аватар"
+        name="avatar"
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
+        children={() => {
+          return (
+          <>
             <input
                   id="input-avatar-link"
                   name="input-avatar-link"
                   type="url"
                   placeholder="Ссылка на картинку"
-                  autocomplete="off"
-                  class="popup__input-text"
+                  autoComplete="off"
+                  className="popup__input-text"
                   required />
-            <span class="input-avatar-link-error popup__input-error"></span>
+            <span className="input-avatar-link-error popup__input-error"></span>
             <button
                   type="submit"
-                  class="popup__submit-btn">
+                  className="popup__submit-btn">
               Сохранить
             </button>
-          </form>
-        </div>
-      </div>
-
-      <div id="card-user" class="popup">
-        <div class="popup__conteiner">
-          <button type="button" class="popup__close"></button>
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup-form" id="form-user" name="form-user" novalidate>
+          </>
+        )}} />
+     <PopupWithForm
+        title="Редактировать профиль"
+        name="profile"
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
+        children={() => {
+          return (
+          <>
             <input
                   id="input-user-name"
                   name="input-user-name"
                   type="text"
                   placeholder="Имя"
-                  minlength="2"
-                  maxlength="40"
-                  autocomplete="off"
-                  class="popup__input-text"
+                  minLength="2"
+                  maxLength="40"
+                  autoComplete="off"
+                  className="popup__input-text"
                   required />
-            <span class="input-user-name-error popup__input-error"></span>
+            <span className="input-user-name-error popup__input-error"></span>
             <input
                   id="input-user-job"
                   name="input-user-job"
                   type="text"
                   placeholder="О себе"
-                  minlength="2"
-                  maxlength="200"
-                  autocomplete="off"
-                  class="popup__input-text"
+                  minLength="2"
+                  maxLength="200"
+                  autoComplete="off"
+                  className="popup__input-text"
                   required />
-            <span class="input-user-job-error popup__input-error"></span>
+            <span className="input-user-job-error popup__input-error"></span>
             <button
                   type="submit"
-                  class="popup__submit-btn">
+                  className="popup__submit-btn">
               Сохранить
             </button>
-          </form>
-        </div>
-      </div>
+          </>
+        )}} />
 
-      <div id="card-delete" class="popup">
-        <div class="popup__conteiner">
-          <button type="button" class="popup__close"></button>
-          <h2 class="popup__title">Вы уверены?</h2>
-          <form class="popup-form" id="form-delete" name="form-delete" novalidate>
+      <div id="card-delete" className="popup">
+        <div className="popup__conteiner">
+          <button type="button" className="popup__close"></button>
+          <h2 className="popup__title">Вы уверены?</h2>
+          <form className="popup-form" id="form-delete" name="form-delete" noValidate>
             <button
                   type="submit"
-                  class="popup__submit-btn">
+                  className="popup__submit-btn">
               Да
             </button>
           </form>
@@ -129,21 +147,21 @@ function App() {
       </div>
 
       <template id="template-element">
-        <div class="elements__element">
-          <img class="elements__element-img"
+        <div className="elements__element">
+          <img className="elements__element-img"
                 src="./images/template.png" alt="шаблон элемента" />
-          <div class="elements__element-caption">
-            <h2 class="elements__element-text">шаблон элемента</h2>
-            <button type="button" class="elements__element-favour">
-              <img class="icon" src="..." alt="no" />
-              <div class="likes">0</div>
+          <div className="elements__element-caption">
+            <h2 className="elements__element-text">шаблон элемента</h2>
+            <button type="button" className="elements__element-favour">
+              <img className="icon" src="..." alt="no" />
+              <div className="likes">0</div>
             </button>
           </div>
-          <button type="button" class="elements__element-trash"></button>
+          <button type="button" className="elements__element-trash"></button>
         </div>
       </template>
 
-    </body>
+    </div>
   );
 }
 

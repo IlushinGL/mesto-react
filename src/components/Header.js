@@ -3,8 +3,8 @@ import logoPath from '../images/Logo.svg';
 
 function Header() {
   return (
-    <header class="header">
-      <div class="header__logo">
+    <header className="header">
+      <div className="header__logo">
         <img src={logoPath} alt="лого" />
       </div>
     </header>

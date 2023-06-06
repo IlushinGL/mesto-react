@@ -1,9 +1,9 @@
 function Footer() {
     return (
-      <footer class="footer">
-        <p class="footer__copyright">Григорий Илюшин 2023</p>
+      <footer className="footer">
+        <p className="footer__copyright">Григорий Илюшин 2023</p>
       </footer>
     );
   }
-  
-  export default Footer;
+
+export default Footer;

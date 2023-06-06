@@ -21,3 +21,13 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Файлы и папки операционной системы
+# .DS_Store
+# Thumbs.db
+
+# Файлы редактора
+# .idea
+# *.sublime*
+# .vscode
+# .editorconfig

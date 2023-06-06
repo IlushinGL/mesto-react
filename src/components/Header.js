@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import logoPath from '../images/Logo.svg';
 
 function Header() {

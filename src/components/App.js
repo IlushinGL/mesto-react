@@ -1,42 +1,21 @@
-import React from 'react';
-import plusPath from '../images/plus.png';
+// import React from 'react';
+import tmplPath from '../images/template.png';
 import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
 
 
 function App() {
   return (
     <body class="page">
       <Header />
-
-      <main class="content">
-
-        <section class="profile">
-          <div class="profile__avatar">
-            <img id="profile-avatar" class="profile__avatar-img" src={plusPath} alt="аватар" />
-          </div>
-
-          <div class="profile__info">
-            <h1 id="profile-text-author" class="profile__title">...</h1>
-            <button type="button" class="profile__edit-button"></button>
-            <p id="profile-text-job" class="profile__subtitle">...</p>
-          </div>
-          <button type="button" class="profile__add-button"></button>
-        </section>
-
-        <section class="elements">
-
-        </section>
-
-      </main>
-
-      <footer class="footer">
-        <p class="footer__copyright">Григорий Илюшин 2023</p>
-      </footer>
+      <Main />
+      <Footer />
 
       <div id="card-image" class="popup popup_img">
         <div class="popup__conteiner popup__conteiner_img">
           <button type="button" class="popup__close"></button>
-          <img class="popup__image" src={plusPath} alt="новый" />
+          <img class="popup__image" src={tmplPath} alt="новый" />
           <h2 class="popup__title popup__title_img">Подпись изображения</h2>
         </div>
       </div>

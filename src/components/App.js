@@ -26,9 +26,9 @@ function App() {
     setCard(card);
   }
   function closeAllPopups() {
-    isEditProfilePopupOpen && setProfilePopupOpen(false);
-    isAddPlacePopupOpen && setPlacePopupOpen(false);
-    isEditAvatarPopupOpen && setAvatarPopupOpen(false);
+    setProfilePopupOpen(false);
+    setPlacePopupOpen(false);
+    setAvatarPopupOpen(false);
     setCard(null);
   }
 

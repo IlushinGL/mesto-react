@@ -7,9 +7,9 @@ function Card({card, onCardClick}) {
   }
 
   return (
-    <div key={card._id} className="elements__element">
+    <div className="elements__element">
       <img onClick={handleClick} className="elements__element-img"
-            src={card.link} alt={card.link} />
+            src={card.link} alt={card.name} />
       <div className="elements__element-caption">
         <h2 className="elements__element-text">{card.name}</h2>
         <button type="button" className="elements__element-favour">

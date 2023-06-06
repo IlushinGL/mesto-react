@@ -1,12 +1,11 @@
-import tmplPath from '../images/template.png';
+function ImagePopup({card, onClose}) {
 
-function ImagePopup() {
   return (
-    <div className="popup popup_img">
+    <div className={'popup popup_img' + (card ? ' popup_opened' : '')}>
       <div className="popup__conteiner popup__conteiner_img">
-        <button type="button" className="popup__close"></button>
-        <img className="popup__image" src={tmplPath} alt="изображение" />
-        <h2 className="popup__title popup__title_img">Подпись изображения</h2>
+        <button onClick={onClose} type="button" className="popup__close"></button>
+        <img className="popup__image" src={card ? card.link : ''} alt={card ? card.link : ''} />
+        <h2 className="popup__title popup__title_img">{card ? card.name : ''}</h2>
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import React from 'react';
-// import tmplPath from '../images/template.png';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -11,6 +10,7 @@ function App() {
   const [isEditProfilePopupOpen, setProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setAvatarPopupOpen] = React.useState(false);
+  const [selectedCard, setCard] = React.useState(null);
 
   function handleEditAvatarClick() {
     setAvatarPopupOpen(true);
@@ -21,10 +21,15 @@ function App() {
   function handleAddPlaceClick() {
     setPlacePopupOpen(true);
   }
+  function handleCardClick(card) {
+    // debugger;
+    setCard(card);
+  }
   function closeAllPopups() {
     isEditProfilePopupOpen && setProfilePopupOpen(false);
     isAddPlacePopupOpen && setPlacePopupOpen(false);
     isEditAvatarPopupOpen && setAvatarPopupOpen(false);
+    setCard(null);
   }
 
   return (
@@ -32,9 +37,10 @@ function App() {
       <Header />
       <Main onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
-            onEditAvatar={handleEditAvatarClick} />
+            onEditAvatar={handleEditAvatarClick}
+            onCardClick={handleCardClick} />
       <Footer />
-      <ImagePopup />
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       <PopupWithForm
         title="Новое место"
         name="place"
@@ -132,7 +138,7 @@ function App() {
           </>
         )}} />
 
-      <div id="card-delete" className="popup">
+      {/* <div id="card-delete" className="popup">
         <div className="popup__conteiner">
           <button type="button" className="popup__close"></button>
           <h2 className="popup__title">Вы уверены?</h2>
@@ -144,22 +150,7 @@ function App() {
             </button>
           </form>
         </div>
-      </div>
-
-      <template id="template-element">
-        <div className="elements__element">
-          <img className="elements__element-img"
-                src="./images/template.png" alt="шаблон элемента" />
-          <div className="elements__element-caption">
-            <h2 className="elements__element-text">шаблон элемента</h2>
-            <button type="button" className="elements__element-favour">
-              <img className="icon" src="..." alt="no" />
-              <div className="likes">0</div>
-            </button>
-          </div>
-          <button type="button" className="elements__element-trash"></button>
-        </div>
-      </template>
+      </div>  */}
 
     </div>
   );

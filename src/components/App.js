@@ -44,99 +44,77 @@ function App() {
       <PopupWithForm
         title="Новое место"
         name="place"
+        butnCaption="Создать"
         isOpen={isAddPlacePopupOpen}
-        onClose={closeAllPopups}
-        children={() => {
-          return (
-          <>
-            <input
-              id="input-place-name"
-              name="input-place-name"
-              type="text"
-              placeholder="Название"
-              minLength="2"
-              maxLength="30"
-              autoComplete="off"
-              className="popup__input-text"
-              required />
-            <span className="input-place-name-error popup__input-error"></span>
-            <input
-              id="input-img-link"
-              name="input-img-link"
-              type="url"
-              placeholder="Ссылка на картинку"
-              autoComplete="off"
-              className="popup__input-text"
-              required />
-            <span className="input-img-link-error popup__input-error"></span>
-            <button
-              type="submit"
-              className="popup__submit-btn">
-              Создать
-            </button>
-          </>
-        )}} />
+        onClose={closeAllPopups}>
+        <input
+          id="input-place-name"
+          name="input-place-name"
+          type="text"
+          placeholder="Название"
+          minLength="2"
+          maxLength="30"
+          autoComplete="off"
+          className="popup__input-text"
+          required />
+        <span className="input-place-name-error popup__input-error"></span>
+        <input
+          id="input-img-link"
+          name="input-img-link"
+          type="url"
+          placeholder="Ссылка на картинку"
+          autoComplete="off"
+          className="popup__input-text"
+          required />
+        <span className="input-img-link-error popup__input-error"></span>
+      </PopupWithForm>
+
       <PopupWithForm
         title="Обновить аватар"
         name="avatar"
+        butnCaption="Сохранить"
         isOpen={isEditAvatarPopupOpen}
-        onClose={closeAllPopups}
-        children={() => {
-          return (
-          <>
-            <input
-                  id="input-avatar-link"
-                  name="input-avatar-link"
-                  type="url"
-                  placeholder="Ссылка на картинку"
-                  autoComplete="off"
-                  className="popup__input-text"
-                  required />
-            <span className="input-avatar-link-error popup__input-error"></span>
-            <button
-                  type="submit"
-                  className="popup__submit-btn">
-              Сохранить
-            </button>
-          </>
-        )}} />
-     <PopupWithForm
+        onClose={closeAllPopups}>
+        <input
+          id="input-avatar-link"
+          name="input-avatar-link"
+          type="url"
+          placeholder="Ссылка на картинку"
+          autoComplete="off"
+          className="popup__input-text"
+          required />
+        <span className="input-avatar-link-error popup__input-error"></span>
+      </PopupWithForm>
+
+      <PopupWithForm
         title="Редактировать профиль"
         name="profile"
+        butnCaption="Сохранить"
         isOpen={isEditProfilePopupOpen}
-        onClose={closeAllPopups}
-        children={() => {
-          return (
-          <>
-            <input
-                  id="input-user-name"
-                  name="input-user-name"
-                  type="text"
-                  placeholder="Имя"
-                  minLength="2"
-                  maxLength="40"
-                  autoComplete="off"
-                  className="popup__input-text"
-                  required />
-            <span className="input-user-name-error popup__input-error"></span>
-            <input
-                  id="input-user-job"
-                  name="input-user-job"
-                  type="text"
-                  placeholder="О себе"
-                  minLength="2"
-                  maxLength="200"
-                  autoComplete="off"
-                  className="popup__input-text"
-                  required />
-            <span className="input-user-job-error popup__input-error"></span>
-            <button
-                  type="submit"
-                  className="popup__submit-btn">
-              Сохранить
-            </button>
-          </>
-        )}} />
+        onClose={closeAllPopups}>
+        <input
+          id="input-user-name"
+          name="input-user-name"
+          type="text"
+          placeholder="Имя"
+          minLength="2"
+          maxLength="40"
+          autoComplete="off"
+          className="popup__input-text"
+          required />
+        <span className="input-user-name-error popup__input-error"></span>
+        <input
+          id="input-user-job"
+          name="input-user-job"
+          type="text"
+          placeholder="О себе"
+          minLength="2"
+          maxLength="200"
+          autoComplete="off"
+          className="popup__input-text"
+          required />
+        <span className="input-user-job-error popup__input-error"></span>
+      </PopupWithForm>
 
       {/* <div id="card-delete" className="popup">
         <div className="popup__conteiner">

@@ -1,4 +1,5 @@
 import React from 'react';
+import {apInterface} from '../utils/Api';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -7,10 +8,18 @@ import PopupWithForm from './PopupWithForm';
 
 
 function App() {
+  const [currentUser, setCurrentUser] = React.useState(null);
+
   const [isEditProfilePopupOpen, setProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setCard] = React.useState(null);
+
+  React.useEffect(() => {
+    apInterface.getUserInfo()
+    .then((info) => {setCurrentUser(info)})
+    .catch((err)=>{console.log(err)});
+  }, []);
 
   function handleEditAvatarClick() {
     setAvatarPopupOpen(true);
@@ -41,6 +50,7 @@ function App() {
             onCardClick={handleCardClick} />
       <Footer />
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+
       <PopupWithForm
         title="Новое место"
         name="place"

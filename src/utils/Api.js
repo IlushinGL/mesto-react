@@ -30,7 +30,6 @@ class Api {
       headers: this._auth
     })
     .then((res) => {return this._handleResponse(res, 'getInitialCards')});
-    // .catch((err) => err);
   }
 
   getUserInfo() {
@@ -41,7 +40,6 @@ class Api {
       headers: this._auth
     })
     .then((res) => {return this._handleResponse(res, 'getUserInfo')});
-    // .catch((err) => err);
   }
 
   setUserInfo({name, about}) {
@@ -56,7 +54,6 @@ class Api {
       })
     })
     .then((res) => {return this._handleResponse(res, 'setUserInfo')});
-    // .catch((err) => err);
   }
 
   addNewCard({link, name}) {
@@ -71,7 +68,6 @@ class Api {
       })
     })
     .then((res) => {return this._handleResponse(res, 'addNewCard')});
-    // .catch((err) => err);
   }
 
   deleteCard(id) {
@@ -82,7 +78,6 @@ class Api {
       headers: this._auth
     })
     .then((res) => {return this._handleResponse(res, 'deleteCard')});
-    // .catch((err) => err);
   }
 
   likeCard(id, like) {
@@ -94,7 +89,6 @@ class Api {
       headers: this._auth
     })
     .then((res) => {return this._handleResponse(res, like ? 'likeCard_yes' : 'likeCard_no')});
-    // .catch((err) => err);
   }
 
   setUserAvatar(link) {
@@ -108,7 +102,6 @@ class Api {
       })
     })
     .then((res) => {return this._handleResponse(res, 'setUserInfo')});
-    // .catch((err) => err);
   }
 }
 

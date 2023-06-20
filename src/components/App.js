@@ -29,17 +29,10 @@ function App() {
     apInterface.getUserInfo()
     .then((info) => {setCurrentUser(info)})
     .catch((err)=>{console.log(err)});
-  }, []);
-
-  React.useEffect(() => {
     // Задаём начальный массив карточек.
     apInterface.getInitialCards()
-    .then((initialCards) => {
-      setCards(Array.from(initialCards));
-    })
-    .catch((err)=>{
-      console.log(err);
-    });
+    .then((initialCards) => {setCards(Array.from(initialCards))})
+    .catch((err)=>{console.log(err)});
   }, []);
 
   function handleCardLike(card) {

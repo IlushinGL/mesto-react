@@ -5,6 +5,8 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
 import ImagePopup from './ImagePopup';
 import PopupWithForm from './PopupWithForm';
 import avatarNulllPath from '../images/template.png';
@@ -66,10 +68,30 @@ function App() {
   }
 
   function handleUpdateUser(new_info) {
-    // Отправить запрос в API на именение и отрисовать новый КОНТЕКСТ.
+    // Отправить запрос в API на изменение и отрисовать новый профиль.
     apInterface.setUserInfo(new_info)
     .then((saved_info) => {
       setCurrentUser(saved_info);
+      closeAllPopups();
+    })
+    .catch((err)=>{console.log(err)});
+  }
+
+  function handleUpdateAvatar(new_link) {
+    // Отправить запрос в API на изменение и отрисовать новый аватар.
+    apInterface.setUserAvatar(new_link)
+    .then((saved_link) => {
+      setCurrentUser(saved_link);
+      closeAllPopups();
+    })
+    .catch((err)=>{console.log(err)});
+  }
+
+  function handleAddPlaceSubmit(new_card) {
+    // Отправить запрос в API на добавление карточки и отрисовать список.
+    apInterface.addNewCard(new_card)
+    .then((saved_card) => {
+      setCards([saved_card, ...cards]);
       closeAllPopups();
     })
     .catch((err)=>{console.log(err)});
@@ -113,55 +135,17 @@ function App() {
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
-          onUpdateUser={handleUpdateUser}
-        />
+          onUpdateUser={handleUpdateUser} />
 
-        <PopupWithForm
-          title="Новое место"
-          name="place"
-          btnCaption="Создать"
-          isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups}>
-          <input
-            id="input-place-name"
-            name="input-place-name"
-            type="text"
-            placeholder="Название"
-            minLength="2"
-            maxLength="30"
-            autoComplete="off"
-            className="popup__input-text"
-            required />
-          <span className="input-place-name-error popup__input-error"></span>
-          <input
-            id="input-img-link"
-            name="input-img-link"
-            type="url"
-            placeholder="Ссылка на картинку"
-            autoComplete="off"
-            className="popup__input-text"
-            required />
-          <span className="input-img-link-error popup__input-error"></span>
-        </PopupWithForm>
-
-        <PopupWithForm
-          title="Обновить аватар"
-          name="avatar"
-          btnCaption="Сохранить"
+        <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}>
-          <input
-            id="input-avatar-link"
-            name="input-avatar-link"
-            type="url"
-            placeholder="Ссылка на картинку"
-            autoComplete="off"
-            className="popup__input-text"
-            required />
-          <span className="input-avatar-link-error popup__input-error"></span>
-        </PopupWithForm>
+          onClose={closeAllPopups}
+          onUpdateAvatar={handleUpdateAvatar} />
 
-
+        <AddPlacePopup
+          isOpen={isAddPlacePopupOpen}
+          onClose={closeAllPopups}
+          onUpdateAvatar={handleAddPlaceSubmit} />
 
         {/* <div id="card-delete" className="popup">
           <div className="popup__conteiner">

@@ -29,7 +29,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
     });
   }
 
-  return(
+  return (
     <PopupWithForm
       title="Редактировать профиль"
       name="profile"

@@ -101,7 +101,7 @@ class Api {
         avatar: link
       })
     })
-    .then((res) => {return this._handleResponse(res, 'setUserInfo')});
+    .then((res) => {return this._handleResponse(res, 'setUserAvatar')});
   }
 }
 

@@ -8,7 +8,6 @@ import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
 import ImagePopup from './ImagePopup';
-import PopupWithForm from './PopupWithForm';
 import avatarNulllPath from '../images/template.png';
 
 
@@ -145,7 +144,7 @@ function App() {
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
-          onUpdateAvatar={handleAddPlaceSubmit} />
+          onAddPlace={handleAddPlaceSubmit} />
 
         {/* <div id="card-delete" className="popup">
           <div className="popup__conteiner">

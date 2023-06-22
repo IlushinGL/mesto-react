@@ -8,6 +8,7 @@ import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
 import ImagePopup from './ImagePopup';
+import ConfirmationPopup from './ConfirmationPopup';
 import avatarNulllPath from '../images/template.png';
 
 
@@ -23,6 +24,7 @@ function App() {
   const [isAddPlacePopupOpen, setPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setCard] = React.useState(null);
+  const [deletedCard, setDeletedCard] = React.useState(null);
 
   React.useEffect(() => {
     // Помещаем МЕНЯ в КОНТЕКСТ.
@@ -49,10 +51,16 @@ function App() {
   }
 
   function handleCardDelete(card) {
+    // Установить карточку и открыть окно подтверждения
+    setDeletedCard(card);
+  }
+
+  function handleCardDeleteConfirm() {
     // Отправить запрос в API на удаление карточки и отрисовать данные без неё
-    apInterface.deleteCard(card._id)
+    apInterface.deleteCard(deletedCard._id)
     .then(() => {
-      setCards((state) => state.filter((item) => item._id !== card._id));
+      setCards((state) => state.filter((item) => item._id !== deletedCard._id));
+      closeAllPopups();
     })
     .catch((err)=>{
       console.log(err);
@@ -106,6 +114,7 @@ function App() {
     setPlacePopupOpen(false);
     setAvatarPopupOpen(false);
     setCard(null);
+    setDeletedCard(null);
   }
 
   return (
@@ -139,19 +148,10 @@ function App() {
           onClose={closeAllPopups}
           onAddPlace={handleAddPlaceSubmit} />
 
-        {/* <div id="card-delete" className="popup">
-          <div className="popup__conteiner">
-            <button type="button" className="popup__close"></button>
-            <h2 className="popup__title">Вы уверены?</h2>
-            <form className="popup-form" id="form-delete" name="form-delete" noValidate>
-              <button
-                    type="submit"
-                    className="popup__submit-btn">
-                Да
-              </button>
-            </form>
-          </div>
-        </div>  */}
+        <ConfirmationPopup
+        isOpen={deletedCard}
+        onClose={closeAllPopups}
+        onConfirm={handleCardDeleteConfirm} />
 
       </div>
     </CurrentUserContext.Provider>

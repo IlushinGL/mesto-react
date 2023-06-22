@@ -3,9 +3,17 @@ import PopupWithForm from "./PopupWithForm";
 
 function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
   const avatarRef = React.useRef();
+  const [caption, setCaption] = React.useState('Сохранить');
+
+  React.useEffect(() => {
+    if (isOpen) {
+      setCaption('Сохранить');
+    }
+  }, [isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
+    setCaption('Изменение аватара...');
     // Передать значение поля во внешний обработчик
     onUpdateAvatar(avatarRef.current.value);
   }
@@ -14,7 +22,7 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
     <PopupWithForm
       title="Обновить аватар"
       name="avatar"
-      btnCaption="Сохранить"
+      btnCaption={caption}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}>

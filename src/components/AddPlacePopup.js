@@ -4,11 +4,13 @@ import PopupWithForm from "./PopupWithForm";
 function AddPlacePopup({isOpen, onClose, onAddPlace}) {
   const [link, setLink] = React.useState('');
   const [name, setName] = React.useState('');
+  const [caption, setCaption] = React.useState('Создать');
 
   React.useEffect(() => {
     if (!isOpen) {
       setLink('');
       setName('');
+      setCaption('Создать');
     }
   }, [isOpen]);
 
@@ -22,6 +24,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setCaption('Сохранение карточки...');
     // Передать значения управляемых компонентов во внешний обработчик
     onAddPlace({
       link: link,
@@ -33,7 +36,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
     <PopupWithForm
       title="Новое место"
       name="place"
-      btnCaption="Создать"
+      btnCaption={caption}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}>

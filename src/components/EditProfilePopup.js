@@ -6,11 +6,13 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
   const currentUser = React.useContext(CurrentUserContext);
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
+  const [caption, setCaption] = React.useState('Сохранить');
 
   React.useEffect(() => {
     if (isOpen) {
       setName(currentUser.name);
       setDescription(currentUser.about);
+      setCaption('Сохранить');
     } else {
       setName('');
       setDescription('');
@@ -27,6 +29,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setCaption('Сохранение профиля...');
     // Передать значения управляемых компонентов во внешний обработчик
     onUpdateUser({
       name: name,
@@ -38,7 +41,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
     <PopupWithForm
       title="Редактировать профиль"
       name="profile"
-      btnCaption="Сохранить"
+      btnCaption={caption}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}>

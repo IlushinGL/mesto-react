@@ -1,4 +1,4 @@
-import {apiData} from './constants';
+import {API_DATA} from './constants';
 
 class Api {
   constructor({server, cohortId, token, user, avatar, cards, like}) {
@@ -105,4 +105,4 @@ class Api {
   }
 }
 
-export const apInterface = new Api(apiData);
+export const apInterface = new Api(API_DATA);

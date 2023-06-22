@@ -1,35 +1,37 @@
 import React from 'react';
-const KEY_NAME_ESC = 'Escape';
-const KEY_EVENT_TYPE = 'keyup';
-const MOUSE_UP = 'mouseup';
-const MODAL = 'popup';
+import { HOOKS_DATA } from './constants';
 
 export function useEscapeKey(handleClose) {
   const handleEscKey = React.useCallback((event) => {
-    if (event.key === KEY_NAME_ESC) {
+    if (event.key === HOOKS_DATA.keyNameEsc) {
       handleClose();
     }
   }, [handleClose]);
 
   React.useEffect(() => {
-    document.addEventListener(KEY_EVENT_TYPE, handleEscKey);
+    document.addEventListener(HOOKS_DATA.keyEventType, handleEscKey);
     return () => {
-      document.removeEventListener(KEY_EVENT_TYPE, handleEscKey);
+      document.removeEventListener(HOOKS_DATA.keyEventType, handleEscKey);
     };
   });
 }
 
 export function useOutsideClick(handleClose) {
   const handleClick = React.useCallback((event) => {
-    if (event.target.classList.contains(MODAL)) {
+    if (event.target.classList.contains(HOOKS_DATA.modalArea)) {
       handleClose();
     }
   }, [handleClose]);
 
   React.useEffect(() => {
-    document.addEventListener(MOUSE_UP, handleClick);
+    document.addEventListener(HOOKS_DATA.mouseUp, handleClick);
     return () => {
-      document.removeEventListener(MOUSE_UP, handleClick);
+      document.removeEventListener(HOOKS_DATA.mouseUp, handleClick);
     };
   });
 }
+
+// export function useFormValidation() {
+//   const [values, setValues] = React.useState({});
+//   const [errors, setErrors] = React.useState({});
+// }

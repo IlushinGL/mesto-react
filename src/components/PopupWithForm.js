@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscapeKey, useOutsideClick } from '../utils/constants';
+import { useEscapeKey, useOutsideClick } from '../utils/customHooks';
 
 function PopupWithForm({name, title, btnCaption, isOpen, onClose, onSubmit, children}) {
   useEscapeKey(onClose);

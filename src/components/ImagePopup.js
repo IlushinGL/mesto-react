@@ -1,4 +1,4 @@
-import { useEscapeKey, useOutsideClick } from '../utils/constants';
+import { useEscapeKey, useOutsideClick } from '../utils/customHooks';
 
 function ImagePopup({card, onClose}) {
   useEscapeKey(onClose);

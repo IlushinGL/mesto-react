@@ -3,13 +3,29 @@ import PopupWithForm from "./PopupWithForm";
 
 function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
   const avatarRef = React.useRef();
+  const [linkError, setLinkError] = React.useState(' ');
   const [caption, setCaption] = React.useState('Сохранить');
+  const [formValid, setFormValid] = React.useState(false);
 
   React.useEffect(() => {
     if (isOpen) {
+      setLinkError(' ');
       setCaption('Сохранить');
+      setFormValid(false);
     }
   }, [isOpen]);
+
+  React.useEffect(() => {
+    if (linkError) {
+      setFormValid(false);
+    } else {
+      setFormValid(true);
+    }
+  }, [linkError]);
+
+  function handleChangeLink(e) {
+    setLinkError(e.target.validationMessage);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -23,20 +39,22 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
       title="Обновить аватар"
       name="avatar"
       btnCaption={caption}
-      btnEnabled={true}
+      btnEnabled={formValid}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}>
       <input
-        id="input-avatar-link"
-        name="input-avatar-link"
+        name="avatar"
         type="url"
         ref={avatarRef}
+        onChange={handleChangeLink}
         placeholder="Ссылка на картинку"
         autoComplete="off"
         className="popup__input-text"
         required />
-      <span className="input-avatar-link-error popup__input-error"></span>
+      <span className="popup__input-error">
+        {linkError}
+      </span>
     </PopupWithForm>
   );
 }

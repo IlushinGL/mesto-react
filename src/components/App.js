@@ -72,9 +72,12 @@ function App() {
     apInterface.setUserInfo(new_info)
     .then((saved_info) => {
       setCurrentUser(saved_info);
-      closeAllPopups();
     })
-    .catch((err)=>{console.log(err)});
+    .catch((err) => {
+      console.log(`${err} <Не удалось изменить профиль name:${new_info.name} about:${new_info.about}>`)})
+    .finally(() => {
+      closeAllPopups();
+    });
   }
 
   function handleUpdateAvatar(new_link) {
@@ -82,9 +85,12 @@ function App() {
     apInterface.setUserAvatar(new_link)
     .then((saved_link) => {
       setCurrentUser(saved_link);
-      closeAllPopups();
     })
-    .catch((err)=>{console.log(err)});
+    .catch((err) => {
+      console.log(`${err} <Не удалось обновить аватар link:${new_link}>`)})
+    .finally(() => {
+      closeAllPopups();
+    });
   }
 
   function handleAddPlaceSubmit(new_card) {
@@ -93,7 +99,8 @@ function App() {
     .then((saved_card) => {
       setCards([saved_card, ...cards]);
     })
-    .catch((err)=>{console.log(`${err} <не удалось добавить карточку имя:${new_card.name} ссылка:${new_card.link}>`)})
+    .catch((err) => {
+      console.log(`${err} <Не удалось добавить карточку name:${new_card.name} link:${new_card.link}>`)})
     .finally(() => {
       closeAllPopups();
     });

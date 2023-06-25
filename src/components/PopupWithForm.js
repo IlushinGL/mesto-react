@@ -10,7 +10,7 @@ function PopupWithForm({name, title, btnCaption, btnEnabled, isOpen, onClose, on
         <div className="popup__conteiner">
           <button onClick={onClose} type="button" className="popup__close"></button>
           <h2 className="popup__title">{title}</h2>
-          <form onSubmit={onSubmit} className="popup-form" name={name}>
+          <form onSubmit={btnEnabled ? onSubmit : undefined} className="popup-form" name={name} noValidate>
             {children}
             <button
               type="submit"
@@ -23,6 +23,7 @@ function PopupWithForm({name, title, btnCaption, btnEnabled, isOpen, onClose, on
       </div>
     );
   } else {
+    // без этого не работает наплыв при открытии попапа
     return (
       <div className={`popup popup_type_${name}`}>
       </div>

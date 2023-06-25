@@ -14,6 +14,7 @@ function ImagePopup({card, onClose}) {
       </div>
     );
   } else {
+    // без этого не работает наплыв при открытии попапа
     return (
       <div className="popup popup_img">
       </div>

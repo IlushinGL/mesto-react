@@ -31,7 +31,3 @@ export function useOutsideClick(handleClose) {
   });
 }
 
-// export function useFormValidation() {
-//   const [values, setValues] = React.useState({});
-//   const [errors, setErrors] = React.useState({});
-// }

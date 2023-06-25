@@ -63,7 +63,6 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setFormValid(false);
     setCaption('Сохранение карточки...');
     // Передать значения управляемых компонентов во внешний обработчик
     onAddPlace({
@@ -82,7 +81,6 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
       onClose={onClose}
       onSubmit={handleSubmit}>
       <input
-        id="input-place-name"
         name="name"
         type="text"
         value={name}
@@ -94,11 +92,10 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
         autoComplete="off"
         className="popup__input-text"
         required />
-      <span className="input-place-name-error popup__input-error">
+      <span className="popup__input-error">
         {nameDirty && nameError}
       </span>
       <input
-        id="input-img-link"
         name="link"
         type="url"
         value={link}
@@ -108,7 +105,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
         autoComplete="off"
         className="popup__input-text"
         required />
-      <span className="input-img-link-error popup__input-error">
+      <span className="popup__input-error">
         {linkDirty && linkError}
       </span>
     </PopupWithForm>

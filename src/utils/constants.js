@@ -7,13 +7,6 @@ export const API_DATA = {
   cards: '/cards',
   like: '/likes',
 };
-export const VALIDATE_CONFIG = {
-  formSelector: '.popup-form',
-  inputSelector: '.popup__input-text',
-  submitButtonSelector: '.popup__submit-btn',
-  inactiveButtonClass: 'popup__submit-btm_inactive',
-  errorClass: 'popup_input-error_active',
-};
 export const HOOKS_DATA = {
   keyNameEsc: 'Escape',
   keyEventType: 'keyup',

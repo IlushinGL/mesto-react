@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEscapeKey, useOutsideClick } from '../utils/customHooks';
 
-function PopupWithForm({name, title, btnCaption, isOpen, onClose, onSubmit, children}) {
+function PopupWithForm({name, title, btnCaption, btnEnabled, isOpen, onClose, onSubmit, children}) {
   useEscapeKey(onClose);
   useOutsideClick(onClose);
   if (isOpen) {
@@ -14,7 +14,8 @@ function PopupWithForm({name, title, btnCaption, isOpen, onClose, onSubmit, chil
             {children}
             <button
               type="submit"
-              className="popup__submit-btn">
+              disabled={!btnEnabled}
+              className={`popup__submit-btn ${!btnEnabled ? 'popup__submit-btm_inactive': ''}`}>
               {btnCaption}
             </button>
           </form>

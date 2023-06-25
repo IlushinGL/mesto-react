@@ -42,6 +42,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
       title="Редактировать профиль"
       name="profile"
       btnCaption={caption}
+      btnEnabled={true}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}>

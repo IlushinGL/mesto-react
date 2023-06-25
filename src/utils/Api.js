@@ -19,7 +19,7 @@ class Api {
     if (response.ok) {
       return response.json();
     }
-    return Promise.reject(`ErrApi_${errTitle}: ${response.status}`);
+    return Promise.reject(`ApiErr_${errTitle}=${response.status}`);
   }
 
   getInitialCards() {

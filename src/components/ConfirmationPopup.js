@@ -22,6 +22,7 @@ function ConfirmationPopup({isOpen, onClose, onConfirm}) {
       title="Вы уверены?"
       name="confirm"
       btnCaption={caption}
+      btnEnabled={true}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}>

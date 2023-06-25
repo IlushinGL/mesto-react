@@ -92,9 +92,11 @@ function App() {
     apInterface.addNewCard(new_card)
     .then((saved_card) => {
       setCards([saved_card, ...cards]);
-      closeAllPopups();
     })
-    .catch((err)=>{console.log(err)});
+    .catch((err)=>{console.log(`${err} <не удалось добавить карточку имя:${new_card.name} ссылка:${new_card.link}>`)})
+    .finally(() => {
+      closeAllPopups();
+    });
   }
 
   function handleEditAvatarClick() {
